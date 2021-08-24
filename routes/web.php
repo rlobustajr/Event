@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/calendar', function () {
+    return view('EventPage');
 });
+
+Route::post('/event/insert', 'EventController@insertEvent');
+Route::post('/event/select', 'EventController@selectEvent');
