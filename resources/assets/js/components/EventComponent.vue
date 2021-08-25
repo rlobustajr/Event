@@ -165,6 +165,8 @@
                     if(this.user.name != null){
                         this.form.registration = false
                         this.form.event = true
+
+                        this.user.name = this.user.name.toUpperCase();
                     }else{
                         this.$bvToast.toast('Your name is required.', {
                             title: 'Warning',
@@ -262,10 +264,11 @@
             },
             //date rage validations
             dateValidations(){
-                if(this.user.to > this.user.from){
-                    return false;
-                }else{
+                this.select_from <= this.select_to
+                if(this.user.from <= this.user.to){
                     return true;
+                }else{
+                    return false;
                 }
             }
         }      

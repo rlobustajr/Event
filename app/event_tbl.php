@@ -71,12 +71,12 @@ class event_tbl extends Model
             foreach($dates as $date){
                 $date = Carbon::parse($date);
 
-                if($date->englishMonth == $current_month && $date->year == $current_year){
-                    $status = '';
-                    $event_name = '';
-                    $checkEvent = in_array($date->englishDayOfWeek, $selected_days);
+                $status = '';
+                $event_name = '';
+                $checkEvent = in_array($date->englishDayOfWeek, $selected_days); //check if the date have an event
 
-                    //check if the date have an event
+                if($date->englishMonth == $current_month && $date->year == $current_year){
+                             
                     if($checkEvent){
                         $status = 'event';
                         $event_name = $event['event_name'];
@@ -94,6 +94,12 @@ class event_tbl extends Model
                         'event' => '',
                         'status' => 'month'
                     ]);
+
+                    //check if the date have an event
+                    if($checkEvent){
+                        $status = 'event';
+                        $event_name = $event['event_name'];
+                    }
 
                     array_push($event_data, [
                         'date' => $date->day.". ".$date->englishDayOfWeek,
