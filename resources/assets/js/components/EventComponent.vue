@@ -114,7 +114,6 @@
 <script>
     export default {
         mounted() {
-            console.log('Component mounted.')
             this.formShow('registration');
             this.selectEvent(0);
         },
@@ -248,7 +247,6 @@
                 })
                 .then((response) => {
                     this.table.items = response.data
-                    console.log(response.data)
                 })
                 .catch((error) => {
 
